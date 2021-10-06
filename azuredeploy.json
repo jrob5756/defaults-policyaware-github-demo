@@ -30,6 +30,22 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', 'demoserverfarm')]"
             ]
+        },
+        {
+            "apiVersion": "2020-02-14-preview",
+            "name": "testresource",
+            "location": "West US 2",
+            "type": "Microsoft.DBForPostgreSql/flexibleServers",
+            "sku": {
+                "tier": "Burstable",
+                "name": "Standard_D4s_v3"
+            },
+            "properties": {
+                "version": "12",
+                "haEnabled": "Disabled"
+            },
+            "tags": {},
+            "dependsOn": []
         }
     ]
 }
