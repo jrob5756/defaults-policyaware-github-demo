@@ -1,0 +1,29 @@
+name: Check Policy
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Checkout Action
+        uses: actions/checkout@v2
+        with:
+          repository: jrob5756/defaults-policyaware-action
+          path: ./.github/actions/defaults-policyaware-action
+
+      - name: Validate Template Against Policy
+        uses: ./.github/actions/defaults-policyaware-action
+        with:
+          templateLocation: ./azuredeploy.json
+          subscriptionId: ${{ secrets.SUBSCRIPTION_ID }}

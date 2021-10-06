@@ -1,0 +1,35 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": { },
+    "variables": { },
+    "resources": [
+        {
+            "apiVersion": "2020-12-01",
+            "type": "Microsoft.Web/serverfarms",
+            "name": "demoserverfarm",
+            "location": "West US 2",
+            "sku": {
+                "Tier": "PremiumV2",
+                "Name": "P2"
+            },
+            "kind": "linux",
+            "properties": {
+                "reserved": true,
+                "zoneRedundant": "Enabled"
+            }
+        },
+        {
+            "apiVersion": "2020-12-01",
+            "type": "Microsoft.Web/sites",
+            "name": "demowebapp",
+            "location": "West US 2",
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'demoserverfarm')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', 'demoserverfarm')]"
+            ]
+        }
+    ]
+}
