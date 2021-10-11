@@ -30,6 +30,19 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', 'demoserverfarm')]"
             ]
+        },
+        {
+            "apiVersion": "2021-04-01-preview",
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "demovault",
+            "location": "West US 2",
+            "properties": {
+                "tenantId": "[subscription().tenantId]",
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                }
+            }
         }
     ]
 }
