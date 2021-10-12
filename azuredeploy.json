@@ -41,7 +41,9 @@
                 "sku": {
                     "family": "A",
                     "name": "standard"
-                }
+                },
+                "enablePurgeProtection": false,
+                "enableSoftDelete": false
             }
         }
     ]
