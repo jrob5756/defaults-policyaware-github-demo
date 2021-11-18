@@ -30,6 +30,21 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', 'demoserverfarm')]"
             ]
+        },
+        {
+            "apiVersion": "2019-09-01",
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "demokeyvault",
+            "location": "West US",
+            "properties": {
+                "tenantId": "[subscription().tenantId]",
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "enablePurgeProtection": false,
+                "enableSoftDelete": false
+            }
         }
     ]
 }
