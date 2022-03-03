@@ -30,6 +30,21 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', 'demoserverfarm')]"
             ]
+        },    
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-06-01",
+            "name": "mystorageaccount13619263",
+            "kind": "BlobStorage",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "properties": {
+                "networkAcls": {
+                "defaultAction": "Allow"
+                }
+            }
         }
     ]
 }
